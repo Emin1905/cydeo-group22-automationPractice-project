@@ -2,8 +2,8 @@
 Feature: Login functionality
   As a user, I should be able to log in so that I can land on homepage
 
-  @validCredentials
-  Scenario Outline: Users can log in with valid credentials
+  @ac1
+  Scenario Outline: AC1- User can log in with valid credentials
     When user go to the login page
     And user is on the login page
     Then user should be able to type valid "<Email>" and "<Password>"
@@ -19,8 +19,8 @@ Feature: Login functionality
       | salesmanager29@info.com | salesmanager |
 
 
-
-  Scenario Outline: User should see "Wrong login/password" message displayed when entering with incorrect credentials
+@ac2
+  Scenario Outline: AC2- User should see "Wrong login/password" message displayed when entering with incorrect credentials
 
     When user go to the login page
     And user enters invalid "<Email>" and "<Password>"
@@ -37,3 +37,23 @@ Feature: Login functionality
 
 
 
+@ac3
+  Scenario: AC3- User should see the "Please fill out this field" message if the password or username is empty
+
+    When user go to the login page
+    When user leaves username box empty
+    And user should be able to click the login button
+    Then user should see Please fill out this field text on the page
+    And user go to the login page
+    When User leaves password box empty
+    And user should be able to click the login button
+    Then user should see Please fill out this field text on the page2
+
+
+
+
+  Scenario: AC4- User should see the password in bullet signs by default while typing (like ****)
+
+    When user go to the login page
+    And user enters password
+    Then user should see bullet signs by default

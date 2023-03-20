@@ -1,6 +1,7 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.LoginFunctionalityPage;
+import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -15,7 +16,7 @@ public class LoginFunctionalityStepDefinitions {
     @When("user go to the login page")
     public void user_go_to_the_login_page() {
 
-        Driver.getDriver().get("https://qa.upgenix.net/web/login/");
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
 
     }
     @And("user is on the login page")
@@ -33,7 +34,6 @@ public class LoginFunctionalityStepDefinitions {
        loginFunctionalityPage.passwordSearchbox.sendKeys(validPassword);
     }
 
-
     @Then("user should be able to click the login button")
     public void user_should_be_able_to_click_the_login_button() {
 
@@ -41,13 +41,18 @@ public class LoginFunctionalityStepDefinitions {
 
     }
 
-
     @Then("user should land on home page")
     public void userShouldLandOnHomePage() {
 
         Assert.assertTrue(loginFunctionalityPage.upgenixHomePageText.isDisplayed());
 
     }
+
+
+
+
+
+
 
 
     @When("user enters invalid {string} and {string}")
@@ -59,8 +64,6 @@ public class LoginFunctionalityStepDefinitions {
 
     }
 
-
-
     @Then("user sees the Wrong login\\/password message displayed")
     public void user_sees_the_wrong_login_password_message_displayed() {
 
@@ -70,4 +73,64 @@ public class LoginFunctionalityStepDefinitions {
 
 
 
+
+
+
+
+
+    @When("user leaves username box empty")
+    public void user_leaves_username_box_empty() {
+
+        loginFunctionalityPage.emailSearchBox.sendKeys("");
+        loginFunctionalityPage.passwordSearchbox.sendKeys("salesmanager");
+
+    }
+    @Then("user should see Please fill out this field text on the page")
+    public void user_should_see_please_fill_out_this_field_text_on_the_page() {
+
+        String validationMessage = loginFunctionalityPage.emailSearchBox.getAttribute("validationMessage");
+        Assert.assertEquals(validationMessage, "Please fill in this field.");
+
+    }
+
+    @When("User leaves password box empty")
+    public void user_leaves_password_box_empty() {
+
+        loginFunctionalityPage.emailSearchBox.sendKeys("salesmanager26@info.com");
+        loginFunctionalityPage.passwordSearchbox.sendKeys("");
+
+    }
+
+    @Then("user should see Please fill out this field text on the page2")
+    public void user_should_see_please_fill_out_this_field_text_on_the_page2() {
+
+        String validationMessage = loginFunctionalityPage.passwordSearchbox.getAttribute("validationMessage");
+        Assert.assertEquals(validationMessage, "Please fill in this field.");
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @And("user enters password")
+    public void userEntersPassword() {
+    }
+
+    @Then("user should see bullet signs by default")
+    public void userShouldSeeBulletSignsByDefault() {
+    }
 }
