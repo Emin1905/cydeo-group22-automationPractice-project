@@ -25,4 +25,12 @@ public class LoginFunctionalityPage {
    @FindBy(xpath = "//button[.='Log in']")
    public WebElement loginButton;
 
+
+   @FindBy(xpath = "//p[@class='alert alert-danger']")
+    public WebElement wrongLoginPasswordMessage;
+
+
+   @FindBy(xpath = "//div[@class='o_thread_title']")
+    public WebElement upgenixHomePageText;
+
 }

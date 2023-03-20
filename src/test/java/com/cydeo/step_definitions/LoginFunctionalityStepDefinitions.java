@@ -41,4 +41,33 @@ public class LoginFunctionalityStepDefinitions {
 
     }
 
+
+    @Then("user should land on home page")
+    public void userShouldLandOnHomePage() {
+
+        Assert.assertTrue(loginFunctionalityPage.upgenixHomePageText.isDisplayed());
+
+    }
+
+
+    @When("user enters invalid {string} and {string}")
+    public void user_enters_invalid_and(String invalidEmail, String invalidPassword) {
+
+        loginFunctionalityPage.emailSearchBox.sendKeys(invalidEmail);
+
+        loginFunctionalityPage.passwordSearchbox.sendKeys(invalidPassword);
+
+    }
+
+
+
+    @Then("user sees the Wrong login\\/password message displayed")
+    public void user_sees_the_wrong_login_password_message_displayed() {
+
+        Assert.assertTrue(loginFunctionalityPage.wrongLoginPasswordMessage.isDisplayed());
+
+    }
+
+
+
 }
