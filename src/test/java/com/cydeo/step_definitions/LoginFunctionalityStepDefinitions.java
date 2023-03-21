@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class LoginFunctionalityStepDefinitions {
 
@@ -124,13 +125,38 @@ public class LoginFunctionalityStepDefinitions {
 
 
 
-
-
     @And("user enters password")
     public void userEntersPassword() {
+
+        loginFunctionalityPage.passwordSearchbox.sendKeys("salesmanager");
+
     }
 
     @Then("user should see bullet signs by default")
     public void userShouldSeeBulletSignsByDefault() {
+
+        Boolean isBulletSign = loginFunctionalityPage.passwordSearchbox.getAttribute("type").equals("password");
+        Assert.assertEquals(isBulletSign, true);
+
     }
+
+
+
+    @And("user enters email and password")
+    public void userEntersEmailAndPassword() {
+
+        loginFunctionalityPage.emailSearchBox.sendKeys("salesmanager26@info.com");
+        loginFunctionalityPage.passwordSearchbox.sendKeys("salesmanager");
+
+    }
+
+    @Then("user checks if pressing enter does the same work as clicking the login button")
+    public void user_checks_if_pressing_enter_does_the_same_work_as_clicking_the_login_button() {
+
+        loginFunctionalityPage.passwordSearchbox.sendKeys(Keys.ENTER);
+
+
+    }
+
+
 }

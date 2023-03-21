@@ -51,9 +51,17 @@ Feature: Login functionality
 
 
 
-
+@ac4
   Scenario: AC4- User should see the password in bullet signs by default while typing (like ****)
 
     When user go to the login page
     And user enters password
     Then user should see bullet signs by default
+
+
+
+  @ac5
+  Scenario: AC5- Verify if the ‘Enter’ key of the keyboard is working correctly on the login page.
+    When user go to the login page
+    And user enters email and password
+    Then user checks if pressing enter does the same work as clicking the login button
