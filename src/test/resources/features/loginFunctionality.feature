@@ -2,7 +2,7 @@
 Feature: Login functionality
   As a user, I should be able to log in so that I can land on homepage
 
-  @ac1
+  @UPGNX10-230
   Scenario Outline: AC1- User can log in with valid credentials
     When user go to the login page
     And user is on the login page
@@ -19,7 +19,7 @@ Feature: Login functionality
       | salesmanager29@info.com | salesmanager |
 
 
-@ac2
+  @UPGNX10-259
   Scenario Outline: AC2- User should see "Wrong login/password" message displayed when entering with incorrect credentials
 
     When user go to the login page
@@ -37,7 +37,7 @@ Feature: Login functionality
 
 
 
-@ac3
+  @UPGNX10-260
   Scenario: AC3- User should see the "Please fill out this field" message if the password or username is empty
 
     When user go to the login page
@@ -51,7 +51,7 @@ Feature: Login functionality
 
 
 
-@ac4
+  @UPGNX10-279
   Scenario: AC4- User should see the password in bullet signs by default while typing (like ****)
 
     When user go to the login page
@@ -60,7 +60,7 @@ Feature: Login functionality
 
 
 
-  @ac5
+  @UPGNX10-280
   Scenario: AC5- Verify if the ‘Enter’ key of the keyboard is working correctly on the login page.
     When user go to the login page
     And user enters email and password
